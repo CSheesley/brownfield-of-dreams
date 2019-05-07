@@ -9,7 +9,9 @@ describe 'A registered user' do
     @user = create(:user)
   end
   it 'can add videos to their bookmarks' do
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(@user)
 
     visit tutorial_path(@tutorial)
 
@@ -21,7 +23,9 @@ describe 'A registered user' do
   end
 
   it "can't add the same bookmark more than once" do
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(@user)
 
     visit tutorial_path(@tutorial)
 
