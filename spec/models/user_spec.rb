@@ -20,7 +20,9 @@ RSpec.describe User, type: :model do
     end
 
     it 'can be created as an Admin user' do
-      admin = User.create(email: 'admin@email.com', password: 'admin', first_name: 'Bob', role: 1)
+      admin = User.create(email: 'admin@email.com',
+                          password: 'admin',
+                          first_name: 'Bob', role: 1)
 
       expect(admin.role).to eq('admin')
       expect(admin.admin?).to be_truthy
