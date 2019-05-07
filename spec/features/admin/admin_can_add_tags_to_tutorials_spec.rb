@@ -7,7 +7,9 @@ describe 'An admin user can add tags to tutorials' do
     admin = create(:user, role: 1)
     tutorial = create(:tutorial)
 
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(admin)
 
     visit '/admin/dashboard'
 
@@ -20,10 +22,6 @@ describe 'An admin user can add tags to tutorials' do
     fill_in 'tutorial[tag_list]', with: 'Ruby'
     click_on 'Update Tags'
     visit root_path
-
-    within('.categories') do
-      expect(page).to have_content('Ruby')
-    end
 
     within('.categories') do
       click_on 'Ruby'
