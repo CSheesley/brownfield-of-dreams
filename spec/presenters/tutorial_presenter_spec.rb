@@ -34,4 +34,3 @@ describe TutorialFacade do
     expect(presenter.next_video).to eq(bloodsport)
   end
 end
-
