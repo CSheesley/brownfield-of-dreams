@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-describe 'User' do
+describe 'User visits root path' do
   it 'user can sign in' do
     user = create(:user)
 
@@ -22,7 +22,9 @@ describe 'User' do
     expect(page).to have_content(user.first_name)
     expect(page).to have_content(user.last_name)
   end
+end
 
+describe 'User visits dashboard' do
   it 'can log out', :js do
     user = create(:user)
 
@@ -43,7 +45,9 @@ describe 'User' do
     expect(page).to_not have_content(user.first_name)
     expect(page).to have_content('SIGN IN')
   end
+end
 
+describe 'User must enter valid information to log in' do
   it 'is shown an error when incorrect info is entered' do
     fake_email = 'email@email.com'
     fake_password = '123'
