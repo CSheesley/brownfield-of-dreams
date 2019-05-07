@@ -2,7 +2,6 @@
 
 require 'rails_helper'
 describe TutorialFacade do
-  describe 'instance methods' do
     before :each do
       @tutorial = create(:tutorial)
       @video1 = create(:video, tutorial_id: @tutorial.id)
