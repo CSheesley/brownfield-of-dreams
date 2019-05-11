@@ -29,9 +29,7 @@ Rails.application.routes.draw do
   delete '/logout', to: "sessions#destroy"
 
 
-  # get 'https://github.com/login/oauth/authorize', as: github_connect
-  get '/oauth/authorize', to: 'https://github.com/login/oauth/authorize', as: github_connect
-
+  get '/github_connect', to: redirect("https://github.com/login/oauth/authorize?client_id=#{ENV['GITHUB_CLIENT_ID']}"), as: 'github_connect'
   get '/auth/github/callback', to: "users#update"
 
   get '/dashboard', to: 'users#show'
