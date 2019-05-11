@@ -20,9 +20,8 @@ class UsersController < ApplicationController
     end
   end
 
-  def update
-    token = auth_hash["credentials"]["token"]
-    current_user.update(git_key: token)
+  def update 
+    current_user.update(git_key: updated_token)
     redirect_to dashboard_path
   end
 
@@ -35,6 +34,10 @@ class UsersController < ApplicationController
 
     def auth_hash
       request.env['omniauth.auth']
+    end
+
+    def updated_token
+      auth_hash["credentials"]["token"]
     end
 
 end
