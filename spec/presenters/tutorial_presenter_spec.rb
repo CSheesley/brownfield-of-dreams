@@ -18,20 +18,18 @@ describe TutorialFacade do
       expect(presenter.current_video.id).to eq(@video1.id)
     end
 
-    context '#next_video' do
-      it 'can find the next video' do
-        presenter = TutorialFacade.new(@tutorial, @video1.id)
+    it 'can find the next video' do
+      presenter = TutorialFacade.new(@tutorial, @video1.id)
 
-        expect(presenter.next_video).to eq(@video2)
-      end
+      expect(presenter.next_video).to eq(@video2)
+    end
 
-      it 'returns the last video if the current video is the last in the list' do
-        learn_to_fight = create(:tutorial)
-        bloodsport = create(:video, tutorial: learn_to_fight, position: 2)
+    it 'returns the last video if the current video is the last in the list' do
+      learn_to_fight = create(:tutorial)
+      bloodsport = create(:video, tutorial: learn_to_fight, position: 2)
 
-        presenter = TutorialFacade.new(learn_to_fight, bloodsport.id)
-        expect(presenter.next_video).to eq(bloodsport)
-      end
+      presenter = TutorialFacade.new(learn_to_fight, bloodsport.id)
+      expect(presenter.next_video).to eq(bloodsport)
     end
   end
 end
