@@ -20,8 +20,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def update 
+  def update
     current_user.update(git_key: updated_token)
+    flash[:connected] = "Connected to Github!"
     redirect_to dashboard_path
   end
 
