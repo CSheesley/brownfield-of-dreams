@@ -4,8 +4,12 @@ class SessionsController < ApplicationController
   end
 
   def create
+    #does not have access to email to find user by
+    #need to find another way to find or create by
+
+    #does have access to auth_hash
+  
     user = User.find_by(email: params[:session][:email])
-    binding.pry
     # if user.git_key.nil?
     #   user.update(git_key: params["authenticity_token"])
     #   redirect_to dashboard_path
@@ -29,8 +33,8 @@ class SessionsController < ApplicationController
 
 private
 
-  def auth_hash
-    request.env['omniauth.auth']
-  end
+    def auth_hash
+      request.env['omniauth.auth']
+    end
 
 end
