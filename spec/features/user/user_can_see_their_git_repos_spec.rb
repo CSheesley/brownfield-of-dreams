@@ -26,7 +26,7 @@ describe 'as a logged in user on my dashboard' do
     expect(page).to have_css('.repository', count: 5)
 
     within first ".repository" do
-      expect(page).to have_css('.repo-link')
+      expect(page).to have_link('brownfield-of-dreams')
     end
   end
 
