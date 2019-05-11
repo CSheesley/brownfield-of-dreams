@@ -1,14 +1,8 @@
 require 'rails_helper'
 
 describe 'User' do
-  before :each do
-    json_response = File.open("./fixtures/user_repos.json")
-    stub_request(:get, "https://api.github.com/user/repos").
-      to_return(status: 200, body: json_response)
-  end
-  
   it 'user can sign in' do
-    user = create(:user, git_key: ENV["GITHUB_API_KEY"])
+    user = create(:user)
 
     visit '/'
 
@@ -27,7 +21,7 @@ describe 'User' do
     expect(page).to have_content(user.last_name)
   end
 
-  it 'can log out', :js do
+  it 'can log out' do
     user = create(:user)
 
     visit login_path
@@ -42,10 +36,10 @@ describe 'User' do
     expect(current_path).to eq(dashboard_path)
 
     click_on 'Log Out'
-
+    
     expect(current_path).to eq(root_path)
     expect(page).to_not have_content(user.first_name)
-    expect(page).to have_content('SIGN IN')
+    expect(page).to have_content('Sign In')
   end
 
   it 'is shown an error when incorrect info is entered' do
