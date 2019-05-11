@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
 
   # get 'https://github.com/login/oauth/authorize', as: github_connect
-  # get '/oauth/authorize', to: 'https://github.com/login/oauth/authorize', as: github_connect
+  get '/oauth/authorize', to: 'https://github.com/login/oauth/authorize', as: github_connect
 
   get '/auth/github/callback', to: "users#update"
 
