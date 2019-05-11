@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe 'visiter can create an account', :js do
   before :each do
-    json_response = File.open("./fixtures/user_repos.json")
-    stub_request(:get, "https://api.github.com/user/repos").
-      to_return(status: 200, body: json_response)
+    json_response = File.open('./fixtures/user_repos.json')
+    stub_request(:get, 'https://api.github.com/user/repos')
+      .to_return(status: 200, body: json_response)
   end
 
   context 'on the root path' do
@@ -42,7 +42,7 @@ describe 'visiter can create an account', :js do
     end
 
     it 'cannot create an account if the username is not unique' do
-      existing_user = create(:user, email: "jimbob@aol.com" )
+      existing_user = create(:user, email: 'jimbob@aol.com')
 
       email = 'jimbob@aol.com'
       first_name = 'Jim'
@@ -64,7 +64,7 @@ describe 'visiter can create an account', :js do
 
       click_on'Create Account'
 
-      expect(page).to have_content("Email already taken")
+      expect(page).to have_content('Email already taken')
     end
   end
 end
