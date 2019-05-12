@@ -37,7 +37,7 @@ class GithubFacade
 
   def newest_repos
     sorted = repo_data.sort_by { |repo| repo['updated_at'] }
-    limited = sorted.reverse!
+    sorted.reverse!
   end
 
   def repo_data

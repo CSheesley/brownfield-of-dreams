@@ -9,7 +9,7 @@ RSpec.describe User, type: :model do
 
   describe 'roles' do
     it 'can be created as default user' do
-      user = User.create(email: 'user@email.com', password: 'password', first_name: 'Jim', role: 0)
+      user = User.create(email: 'user@email.com',password: 'password', first_name: 'Jim', role: 0)
 
       expect(user.role).to eq('default')
       expect(user.default?).to be_truthy
