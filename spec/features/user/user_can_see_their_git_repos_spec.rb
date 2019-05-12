@@ -18,7 +18,9 @@ describe 'as a logged in user on my dashboard' do
   it 'sees a section for github and their collection of repos' do
     user = create(:user, git_key: 'bananas')
 
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(user)
 
     visit dashboard_path
 
@@ -30,10 +32,12 @@ describe 'as a logged in user on my dashboard' do
     end
   end
 
-  it 'does not see a section for github, or any repos if missing github token' do
+  it 'does not see a github section or any repos if missing github token' do
     user = create(:user)
 
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(user)
 
     visit dashboard_path
 
