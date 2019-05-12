@@ -5,16 +5,18 @@ describe 'Visitor' do
     it 'can see a list of tutorials' do
       tutorial1 = create(:tutorial)
       tutorial2 = create(:tutorial)
-      
+
       visit root_path
 
       expect(page).to have_css('.tutorial', count: 2)
 
-      within(first('.tutorials')) do
+      within('.tutorials') do
         expect(page).to have_css('.tutorial')
         expect(page).to have_css('.tutorial-description')
         expect(page).to have_content(tutorial1.title)
         expect(page).to have_content(tutorial1.description)
+        expect(page).to have_content(tutorial2.title)
+        expect(page).to have_content(tutorial2.description)
       end
     end
   end
