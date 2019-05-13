@@ -19,7 +19,7 @@
   <section class='github'>
     <h2>Github</h2>
     <h4>Repositories</h4>
-      <div class='repositories'>
+      <div class='repositories'>\
       <% facade.repos(5).each do |repo| %>
         <ul class='repository'>
           <li class='repo-link'><%= link_to repo.name, repo.url %></li>
@@ -30,15 +30,12 @@
     <div class='followers'>
       <% facade.followers(5).each do |follower| %>
       <ul class='follower'>
-        <li class='profile-link'><%= link_to follower.name, follower.url %></li>
-
-
-        <%# <% if follower.git_id %>
-        <!-- <li class='friend-link'><%= link_to "Add Friend", friend_path %></li> %> -->
-
-
+        <li class='profile-link'><%= link_to follower.name, follower.url %>
+        <% if follower.add_friend? %>
+          <%= link_to "Add Friend", class: 'friend-link'%>
+        <% end %></li>
       </ul>
-        <% end %>
+      <% end %>
     </div>
     <h4>Following</h4>
     <div class='followed'>
