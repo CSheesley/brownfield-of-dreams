@@ -31,6 +31,12 @@
       <% facade.followers(5).each do |follower| %>
       <ul class='follower'>
         <li class='profile-link'><%= link_to follower.name, follower.url %></li>
+
+
+        <%# <% if follower.git_id %>
+        <!-- <li class='friend-link'><%= link_to "Add Friend", friend_path %></li> %> -->
+
+
       </ul>
         <% end %>
     </div>
