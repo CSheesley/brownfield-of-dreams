@@ -9,7 +9,6 @@ class Githubber
 
   def add_friend?
     User.find_by(git_id: self.git_id)
-
   end
 
 
