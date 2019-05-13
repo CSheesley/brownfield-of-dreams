@@ -1,5 +1,4 @@
 class GithubFacade
-
   def initialize(current_user)
     @user = current_user
     @key = @user.git_key
@@ -28,25 +27,24 @@ class GithubFacade
 
   private
 
-    def github_followers
-      @_github_followers = service.get_followers
-    end
+  def github_followers
+    @_github_followers = service.get_followers
+  end
 
-    def github_followed
-      @_github_followed = service.get_followed
-    end
+  def github_followed
+    @_github_followed = service.get_followed
+  end
 
-    def newest_repos
-      sorted = repo_data.sort_by { |repo| repo["updated_at"] }
-      limited = sorted.reverse!
-    end
+  def newest_repos
+    sorted = repo_data.sort_by { |repo| repo['updated_at'] }
+    sorted.reverse!
+  end
 
-    def repo_data
-      @_repo_data = service.get_repos
-    end
+  def repo_data
+    @_repo_data = service.get_repos
+  end
 
-    def service
-      @_service ||= GithubService.new(@user)
-    end
-
+  def service
+    @_service ||= GithubService.new(@user)
+  end
 end
