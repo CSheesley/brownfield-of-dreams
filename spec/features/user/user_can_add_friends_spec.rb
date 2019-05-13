@@ -23,11 +23,11 @@ describe 'as a logged in user' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(corey)
 
       visit dashboard_path
-
+      save_and_open_page
       within '.followers' do
-
+        expect(page).to have_css('.follower', count: 2)
+        expect(page).to have_link("Add Friend", count: 1)
       end
-
     end
   end
 end
