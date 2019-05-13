@@ -22,21 +22,26 @@ class UsersController < ApplicationController
 
   def update
     current_user.update(git_key: updated_token)
+    current_user.update(git_id: update_git_id)
     flash[:connected] = 'Connected to Github!'
     redirect_to dashboard_path
   end
 
   private
 
-  def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password)
-  end
+    def user_params
+      params.require(:user).permit(:email, :first_name, :last_name, :password)
+    end
 
-  def auth_hash
-    request.env['omniauth.auth']
-  end
+    def auth_hash
+      request.env['omniauth.auth']
+    end
 
-  def updated_token
-    auth_hash['credentials']['token']
-  end
+    def updated_token
+      auth_hash['credentials']['token']
+    end
+
+    def update_git_id
+      auth_hash['credentials']['uid']
+    end
 end
