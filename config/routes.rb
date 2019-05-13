@@ -31,9 +31,12 @@ Rails.application.routes.draw do
   # get '/github_connect', to: redirect("https://github.com/login/oauth/authorize?client_id=#{ENV['GITHUB_CLIENT_ID']}"), as: 'github_connect'
   get '/auth/github/callback', to: 'users#update'
   get '/login/oauth/authorize', to: 'users#update'
-
   get '/dashboard', to: 'users#show'
+
+  get '/add_friend', to: 'friends#create'
+
   get '/about', to: 'about#show'
+
   get '/get_started', to: 'get_started#show'
 
   resources :users, only: %i[new create update edit]
