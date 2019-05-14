@@ -30,20 +30,35 @@
     <div class='followers'>
       <% facade.followers(5).each do |follower| %>
       <ul class='follower'>
-        <li class='profile-link'><%= link_to follower.name, follower.url %></li>
+        <li class='profile-link'><%= link_to follower.name, follower.url %>
+        <% if follower.a_user? && follower.not_friend?(current_user) %>
+          <%= link_to "Add Friend", add_friend_path(git_id: follower.git_id), class: 'friend-link'%>
+        <% end %></li>
       </ul>
-        <% end %>
+      <% end %>
     </div>
     <h4>Following</h4>
     <div class='followed'>
       <% facade.followed(5).each do |single_followed| %>
       <ul class='single_followed'>
-        <li class='profile-link'><%= link_to single_followed.name, single_followed.url %></li>
+        <li class='profile-link'><%= link_to single_followed.name, single_followed.url %>
+        <% if single_followed.a_user? && single_followed.not_friend?(current_user) %>
+          <%= link_to "Add Friend", add_friend_path(git_id: single_followed.git_id), class: 'friend-link'%>
+        <% end %></li>
       </ul>
         <% end %>
     </div>
   </section>
   <% end %>
 
+
+  <h4>Friends</h4>
+    <div class='friends'>
+      <% current_user.friends.each do |friend| %>
+      <ul class='friend'>
+        <li><%= friend.first_name%> <%= friend.last_name%></li>
+      </ul>
+      <% end %>
+    </div>
 
 </section>
