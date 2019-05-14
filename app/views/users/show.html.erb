@@ -52,4 +52,13 @@
   <% end %>
 
 
+  <h4>Friends</h4>
+    <div class='friends'>
+      <% current_user.friends.each do |friend| %>
+      <ul class='friend'>
+        <li><%= friend.first_name%> <%= friend.last_name%></li>
+      </ul>
+      <% end %>
+    </div>
+
 </section>
