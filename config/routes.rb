@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   get '/login/oauth/authorize', to: 'users#update'
   get '/dashboard', to: 'users#show'
 
-  get '/add_friend', to: 'friendships#create'
+  post '/add_friend', to: 'friendships#create'
 
   get '/about', to: 'about#show'
 
