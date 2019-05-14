@@ -85,7 +85,7 @@ describe 'as a logged in user' do
 
       test_post_request = Capybara.current_session.driver
       test_post_request.submit :post, '/add_friend?git_id=123456', nil
-      save_and_open_page
+      
       expect(page).to have_content("Invalid user id")
     end
   end
