@@ -32,7 +32,7 @@
       <ul class='follower'>
         <li class='profile-link'><%= link_to follower.name, follower.url %>
         <% if follower.a_user? && follower.not_friend?(current_user) %>
-          <%= link_to "Add Friend", add_friend_path(git_id: follower.git_id), class: 'friend-link'%>
+          <%= button_to "Add Friend", add_friend_path(git_id: follower.git_id), class: 'friend-link'%>
         <% end %></li>
       </ul>
       <% end %>
@@ -43,7 +43,7 @@
       <ul class='single_followed'>
         <li class='profile-link'><%= link_to single_followed.name, single_followed.url %>
         <% if single_followed.a_user? && single_followed.not_friend?(current_user) %>
-          <%= link_to "Add Friend", add_friend_path(git_id: single_followed.git_id), class: 'friend-link'%>
+          <%= button_to "Add Friend", add_friend_path(git_id: single_followed.git_id), class: 'friend-link'%>
         <% end %></li>
       </ul>
         <% end %>
