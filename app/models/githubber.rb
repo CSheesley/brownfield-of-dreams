@@ -7,10 +7,12 @@ class Githubber
     @git_id = githubber_data['id']
   end
 
-  def add_friend?
-    User.find_by(git_id: self.git_id)
+  def a_user?
+    friend = User.find_by(git_id: self.git_id)
   end
 
-
-  
+  def not_friend?(current_user)
+    friend = User.find_by(git_id: self.git_id)
+    !current_user.friends.include?(friend)
+  end
 end
