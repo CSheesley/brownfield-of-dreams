@@ -42,6 +42,6 @@ class UsersController < ApplicationController
     end
 
     def update_git_id
-      auth_hash['credentials']['uid']
+      auth_hash['uid']
     end
 end
