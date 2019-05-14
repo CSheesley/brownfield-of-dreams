@@ -30,11 +30,11 @@ describe 'as a logged in user' do
 
   context 'when I visit my dashboard and do not have a git_key' do
     before :each do
-      user = create(:user)
+      @user = create(:user)
 
       allow_any_instance_of(ApplicationController)
         .to receive(:current_user)
-        .and_return(user)
+        .and_return(@user)
 
       visit dashboard_path
     end
@@ -54,6 +54,9 @@ describe 'as a logged in user' do
       click_link('Connect To Github')
 
       expect(current_path).to eq(dashboard_path)
+
+      expect(@user.git_id).to eq(123)
+      expect(@user.git_key).to eq("123456")
 
       expect(page).to have_content('Connected to Github!')
       expect(page).to have_css('.github')
