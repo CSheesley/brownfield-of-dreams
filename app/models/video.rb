@@ -10,10 +10,15 @@ class Video < ApplicationRecord
   def self.set_missing_postions
     missing_positions = Video.where(position: nil)
     missing_positions.each do |video|
-      tutorial = Tutorial.find(video.tutorial_id)
-      correct = tutorial.videos.reject {|vid| vid.position == nil }
-      positions = correct.count
-      video.update(position: (positions + 1))
+      video.set_position
     end
   end
+
+  def set_position
+    tutorial = Tutorial.find(self.tutorial_id)
+    correct = tutorial.videos.reject {|vid| vid.position == nil }
+    positions = correct.count
+    self.update(position: (positions + 1))
+  end
+
 end
