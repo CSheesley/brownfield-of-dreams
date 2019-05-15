@@ -21,13 +21,15 @@ RSpec.describe Video, type: :model do
 
         expect(video_2.position).to eq(nil)
         expect(video_3.position).to eq(nil)
-        # force create an object despite validation
+
         Video.set_missing_postions
+
+        video_2.reload
+        video_3.reload
 
         expect(video_2.position).to eq(2)
         expect(video_3.position).to eq(3)
       end
     end
   end
-
 end
