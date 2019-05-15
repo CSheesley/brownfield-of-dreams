@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'as a guest user' do
   describe 'on the home page' do
-    it 'can sign in and activate account with email' do
+    it 'can sign in and be sent activation email' do
 
     visit root_path
 
@@ -24,7 +24,17 @@ RSpec.describe 'as a guest user' do
     
     user = User.last
     expect(user.role).to eq("default")
+    end
 
+    it 'activates its account after clicking on activation link in email' do
+      user = create(:user)
+
+      expect(user.role).to eq('default')
+      #check email
+      #link visit here to activate account
+      #click on link
+      #taken to new activation show page, with link back to root
+      #should see 'status active'
 
     end
   end
