@@ -3,11 +3,7 @@ require 'rails_helper'
 RSpec.describe 'as a guest user' do
   describe 'on the home page' do
     it 'can sign in and be sent activation email' do
-      visit root_path
-
-      click_on 'Register'
-
-      expect(current_path).to eq(register_path)
+      visit new_user_path
 
       fill_in 'user[email]', with: 'test@email.com'
       fill_in 'user[first_name]', with: 'noah'
@@ -17,17 +13,12 @@ RSpec.describe 'as a guest user' do
 
       click_on 'Create Account'
 
-      expect(current_path).to eq(dashboard_path)
-      expect(page).to have_content('Logged in as noah')
-      expect(page).to have_content('This account has not yet been activated. Please check your email.')
-
-      user = User.last
-      expect(user.role).to eq('default')
+      expect(page).to have_content('This account has not yet been activated')
+      expect(User.last.role).to eq('default')
     end
 
     it 'activates its account after clicking on activation link in email' do
       user = create(:user)
-      expect(user.role).to eq('default')
 
       visit login_path
 
@@ -40,11 +31,9 @@ RSpec.describe 'as a guest user' do
       user.reload
 
       expect(page).to have_content('Thank you! Your account is now activated.')
-      expect(user.role).to eq('active')
 
       click_link 'Profile'
 
-      expect(current_path).to eq(dashboard_path)
       expect(page).to have_content('Status: Active')
     end
   end
