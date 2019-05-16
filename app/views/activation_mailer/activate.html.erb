@@ -1,2 +1,5 @@
 <h1>Hello <%= @user.first_name %></h1>
 <%= link_to "Visit here to activate your account.", "localhost:3000/activate?email=#{@user.email}" %>
+
+<% # link for heroku deployment %>
+<% # "pacific-refuge-67925.herokuapp.com/activate?email=#{@user.email}" %>
