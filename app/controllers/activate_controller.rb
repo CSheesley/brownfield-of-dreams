@@ -1,6 +1,12 @@
 class ActivateController < ApplicationController
 
-  def create
+  def show
+
   end
+
+  def create
+    render :show
+  end
+
 
 end

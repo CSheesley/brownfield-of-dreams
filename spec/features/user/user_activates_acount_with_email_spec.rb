@@ -28,7 +28,8 @@ RSpec.describe 'as a guest user' do
 
     it 'activates its account after clicking on activation link in email' do
       user = create(:user)
-
+      visit activate_path(email: user.email)
+      
       expect(user.role).to eq('default')
       #check email
       #link visit here to activate account
