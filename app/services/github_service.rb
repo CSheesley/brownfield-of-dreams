@@ -19,7 +19,7 @@ class GithubService
 
   def get_json(url)
     response = conn.get(url)
-    data = JSON.parse(response.body, symbolize_name: true)
+    JSON.parse(response.body, symbolize_name: true)
   end
 
   def conn

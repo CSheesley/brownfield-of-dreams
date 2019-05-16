@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   def create
-    if new_friend == User.find_by(git_id: params[:git_id])
+    if new_friend = User.find_by(git_id: params[:git_id])
       create_friends(new_friend)
       flash[:success] = "#{new_friend.first_name} added as a friend!"
     else
