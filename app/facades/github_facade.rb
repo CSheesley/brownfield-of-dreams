@@ -45,6 +45,6 @@ class GithubFacade
   end
 
   def service
-    @_service ||= GithubService.new(@user)
+    @service ||= GithubService.new(@user)
   end
 end
