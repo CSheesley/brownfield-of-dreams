@@ -42,7 +42,7 @@ describe 'as a logged in user' do
       expect(page).to have_link('Connect To Github')
     end
 
-    it 'after clicking on connect to github link, I go through the OAuth process and see my dashboard' do
+    it 'clicks link connect to github, taken through OAuth then to dashboard' do
       OmniAuth.config.test_mode = true
       mock_auth_hash = { 'provider' => 'github',
                          'uid' => '123',
