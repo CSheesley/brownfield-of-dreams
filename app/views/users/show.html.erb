@@ -48,10 +48,8 @@
       </ul>
         <% end %>
     </div>
-  </section>
   <% end %>
-
-
+<% unless current_user.friends.empty? %>
   <h4>Friends</h4>
     <div class='friends'>
       <% current_user.friends.each do |friend| %>
@@ -60,5 +58,5 @@
       </ul>
       <% end %>
     </div>
-
+  <% end %>
 </section>
