@@ -6,7 +6,7 @@ describe 'On the home page' do
       tutorial1 = create(:tutorial)
       tutorial2 = create(:tutorial)
       tutorial3 = create(:tutorial, classroom: true)
-      
+
       visit root_path
 
       expect(page).to have_css('.tutorial', count: 2)
@@ -29,7 +29,7 @@ describe 'On the home page' do
       tutorial3 = create(:tutorial, classroom: true)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-      
+
       visit root_path
 
       expect(page).to have_css('.tutorial', count: 3)

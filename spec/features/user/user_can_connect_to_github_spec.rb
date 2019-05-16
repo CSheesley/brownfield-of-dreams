@@ -56,7 +56,7 @@ describe 'as a logged in user' do
       expect(current_path).to eq(dashboard_path)
 
       expect(@user.git_id).to eq(123)
-      expect(@user.git_key).to eq("123456")
+      expect(@user.git_key).to eq('123456')
 
       expect(page).to have_content('Connected to Github!')
       expect(page).to have_css('.github')

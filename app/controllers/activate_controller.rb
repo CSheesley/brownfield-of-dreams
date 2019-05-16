@@ -1,8 +1,5 @@
 class ActivateController < ApplicationController
-
-  def show
-
-  end
+  def show; end
 
   def create
     # require 'pry'; binding.pry
@@ -11,7 +8,4 @@ class ActivateController < ApplicationController
       render :show
     end
   end
-
-
 end
-
