@@ -28,7 +28,9 @@ describe 'On the home page' do
       tutorial2 = create(:tutorial)
       tutorial3 = create(:tutorial, classroom: true)
 
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      allow_any_instance_of(ApplicationController)
+        .to receive(:current_user)
+        .and_return(user)
 
       visit root_path
 
