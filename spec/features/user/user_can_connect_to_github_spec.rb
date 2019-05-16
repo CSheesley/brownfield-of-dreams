@@ -38,31 +38,23 @@ describe 'as a logged in user' do
 
       visit dashboard_path
     end
-    it 'sees a link to connect to github ' do
-      expect(page).to have_link('Connect To Github')
-    end
 
     it 'clicks link connect to github, taken through OAuth then to dashboard' do
       OmniAuth.config.test_mode = true
       mock_auth_hash = { 'provider' => 'github',
                          'uid' => '123',
                          'info' => {},
-                         'credentials' => { 'token' => '123456', 'expires' => false },
+                         'credentials' => { 'token' => '123456',
+                                            'expires' => false },
                          'extra' => {} }
       OmniAuth.config.mock_auth[:github] = mock_auth_hash
 
       click_link('Connect To Github')
 
       expect(current_path).to eq(dashboard_path)
-
       expect(@user.git_id).to eq(123)
       expect(@user.git_key).to eq('123456')
-
       expect(page).to have_content('Connected to Github!')
-      expect(page).to have_css('.github')
-      expect(page).to have_css('.repositories')
-      expect(page).to have_css('.followers')
-      expect(page).to have_css('.followed')
     end
   end
 end
