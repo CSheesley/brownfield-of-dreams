@@ -14,14 +14,23 @@ describe 'as a logged in user' do
     stub_request(:get, 'https://api.github.com/user/repos')
       .to_return(status: 200, body: json_repos_response)
 
-    @user_1 = create(:user, first_name: 'corey', git_key: 'bananas', git_id: 43_529_041)
-    @user_2 = create(:user, first_name: 'noah', git_key: 'apples', git_id: 34_421_236)
-    @user_3 = create(:user, first_name: 'earl', git_key: 'oranges', git_id: 34_906_415)
+    @user1 = create(:user,
+                    first_name: 'corey',
+                    git_key: 'bananas',
+                    git_id: 43_529_041)
+    @user2 = create(:user,
+                    first_name: 'noah',
+                    git_key: 'apples',
+                    git_id: 34_421_236)
+    @user3 = create(:user,
+                    first_name: 'earl',
+                    git_key: 'oranges',
+                    git_id: 34_906_415)
 
     visit login_path
 
-    fill_in 'session[email]', with: @user_1.email
-    fill_in 'session[password]', with: @user_1.password
+    fill_in 'session[email]', with: @user1.email
+    fill_in 'session[password]', with: @user1.password
 
     click_on 'Log In'
   end
@@ -30,8 +39,8 @@ describe 'as a logged in user' do
     it 'shows an Add Friend button next to followers/followed names' do
       expect(current_path).to eq(dashboard_path)
 
-      expect(@user_1.friends.count).to eq(0)
-      expect(@user_2.friends.count).to eq(0)
+      expect(@user1.friends.count).to eq(0)
+      expect(@user2.friends.count).to eq(0)
 
       within '.followed' do
         expect(page).to have_css('.single_followed', count: 5)
@@ -46,15 +55,15 @@ describe 'as a logged in user' do
 
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_button('Add Friend', count: 1)
-      expect(@user_1.friends.count).to eq(1)
-      expect(@user_2.friends.count).to eq(1)
-      expect(page).to have_content("#{@user_2.first_name} added as a friend!")
+      expect(@user1.friends.count).to eq(1)
+      expect(@user2.friends.count).to eq(1)
+      expect(page).to have_content("#{@user2.first_name} added as a friend!")
     end
 
     it 'shows a list of friends' do
       expect(current_path).to eq(dashboard_path)
 
-      expect(@user_1.friends.count).to eq(0)
+      expect(@user1.friends.count).to eq(0)
 
       within '.followed' do
         expect(page).to have_css('.single_followed', count: 5)
@@ -70,17 +79,17 @@ describe 'as a logged in user' do
 
       within '.friends' do
         expect(page).to have_css('.friend', count: 2)
-        expect(page).to have_content(@user_2.first_name)
-        expect(page).to have_content(@user_2.last_name)
-        expect(page).to have_content(@user_3.first_name)
-        expect(page).to have_content(@user_3.last_name)
+        expect(page).to have_content(@user2.first_name)
+        expect(page).to have_content(@user2.last_name)
+        expect(page).to have_content(@user3.first_name)
+        expect(page).to have_content(@user3.last_name)
       end
 
       expect(page).to have_button('Add Friend', count: 0)
-      expect(@user_1.friends.count).to eq(2)
+      expect(@user1.friends.count).to eq(2)
     end
 
-    it 'receives an error message if they attempt to send a post request with an invalid id' do
+    it 'receives error if they send post request with invalid id' do
       expect(current_path).to eq(dashboard_path)
 
       test_post_request = Capybara.current_session.driver
