@@ -8,7 +8,7 @@ RSpec.describe Video, type: :model do
   end
 
   describe 'class methods' do
-    context '.set_missing_postions' do
+    context '.set_missing_positions' do
       it 'will assign positions to videos where position is currently nil' do
         tutorial = create(:tutorial)
         video_1 = Video.create(title: "Video 1", description: "A video", tutorial_id: tutorial.id, position: 1)
@@ -22,7 +22,7 @@ RSpec.describe Video, type: :model do
         expect(video_2.position).to eq(nil)
         expect(video_3.position).to eq(nil)
 
-        Video.set_missing_postions
+        Video.set_missing_positions
 
         video_2.reload
         video_3.reload
