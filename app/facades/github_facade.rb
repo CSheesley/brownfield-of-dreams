@@ -4,21 +4,21 @@ class GithubFacade
     @key = @user.git_key
   end
 
-  def repos(limit)
+  def repos(limit = 5)
     limited = newest_repos.take(limit)
     limited.map do |repo_data|
       Repo.new(repo_data)
     end
   end
 
-  def followers(limit = nil)
+  def followers(limit = 5)
     rand_limited = github_followers.sample(limit)
     rand_limited.map do |follower_data|
       Githubber.new(follower_data)
     end
   end
 
-  def followed(limit = nil)
+  def followed(limit = 5)
     rand_limited = github_followed.sample(limit)
     rand_limited.map do |followed_data|
       Githubber.new(followed_data)
