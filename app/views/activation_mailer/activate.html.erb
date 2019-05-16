@@ -1,3 +1,2 @@
 <h1>Hello <%= @user.first_name %></h1>
-please click this link to activate your account
-<%= link_to "Visit here to activate your account.", activate_path() %>
+<%= link_to "Visit here to activate your account.", "localhost:3000/activate?email=#{@user.email}" %>
