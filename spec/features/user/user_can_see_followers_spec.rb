@@ -16,10 +16,12 @@ describe 'as a logged in user' do
   end
 
   context 'when I visit my dashboard - in the Github section' do
-    it 'shows a followers section, with my followers handles, which link to their profiles' do
+    it 'my followers handles are links to their profiles' do
       user = create(:user, git_key: 'bananas')
 
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      allow_any_instance_of(ApplicationController)
+        .to receive(:current_user)
+        .and_return(user)
 
       visit dashboard_path
 
