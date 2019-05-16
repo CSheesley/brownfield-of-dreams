@@ -37,13 +37,13 @@ describe 'as a logged in user' do
         expect(page).to have_css('.single_followed', count: 5)
         expect(page).to have_button("Add Friend", count: 1)
       end
-
+      
       within '.followers' do
         expect(page).to have_css('.follower', count: 2)
         expect(page).to have_button("Add Friend", count: 1)
         click_on("Add Friend")
       end
-
+      
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_button("Add Friend", count: 1)
       expect(@user_1.friends.count).to eq(1)
