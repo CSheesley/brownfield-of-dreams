@@ -7,7 +7,7 @@ class Video < ApplicationRecord
   validates_presence_of :description
   validates_presence_of :position
 
-  def self.set_missing_postions
+  def self.set_missing_positions
     missing_positions = Video.where(position: nil)
     missing_positions.each do |video|
       video.set_position
