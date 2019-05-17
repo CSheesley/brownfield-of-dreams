@@ -7,7 +7,9 @@ class InviteController < ApplicationController
     # @user = current_user
     # handle
     # mailer
-    binding.pry
+    # binding.pry
+    flash[:success] = "Successfully sent invite!"
+    redirect_to dashboard_path
   end
 
 end
