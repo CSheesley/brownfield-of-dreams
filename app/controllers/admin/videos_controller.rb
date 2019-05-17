@@ -1,6 +1,7 @@
 class Admin::VideosController < Admin::BaseController
   def edit
     @video = Video.find(params[:video_id])
+    require 'pry'; binding.pry
   end
 
   def update
@@ -16,11 +17,12 @@ class Admin::VideosController < Admin::BaseController
 
       video.save
 
-      flash[:success] = 'Successfully created video.'
+      flash[:success] = "#{video.title} added to #{tutorial.title}"
     rescue StandardError # Sorry about this. We should get more specific instead of swallowing all errors.
       flash[:error] = 'Unable to create video.'
     end
 
+    # redirect_to tutorial_path(tutorial)
     redirect_to edit_admin_tutorial_path(id: tutorial.id)
   end
 
