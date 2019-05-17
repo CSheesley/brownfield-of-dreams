@@ -1,9 +1,15 @@
+
+
 <main class="tutorials">
 <h2><%= @facade.title %></h2>
 <h1 id="message"></h1>
 <div class="col col-4">
   <h4>Videos</h4>
   <ul>
+ <% if @facade.videos == [] %>
+  <p>There are no videos for this tutorial, but you can add one!</p>
+  <%= link_to 'Add Video', new_admin_tutorial_video_path(@facade.id) %>
+ <% else %>
     <% @facade.videos.each do |video| %>
       <li>
         <h3><%= link_to video.title, tutorial_path(video_id: video.id), class: "show-link", id: video.position %></h3>
@@ -63,7 +69,7 @@
   <p data-controller="tutorials" id="description-<%= @facade.current_video.id %>">
     <%= @facade.current_video.description.truncate(50) %>...
     <%= link_to "More", "#", "data-action" => "click->tutorials#showDescription", id: @facade.current_video.id, class: "show-link"%>
-  </p>
+  </pe>
 </div>
-
+ <% end %>
 </main>
