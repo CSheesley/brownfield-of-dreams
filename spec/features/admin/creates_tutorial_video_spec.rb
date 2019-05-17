@@ -18,7 +18,7 @@ RSpec.describe 'as a admin on the home page' do
       # save_and_open_page
       click_link 'Add Video'
 
-      expect(current_path).to eq(new_admin_tutorial_video_path)
+      expect(current_path).to eq(new_admin_tutorial_video_path(tutorial))
       expect(Video.count).to eq(0)
       
       fill_in 'title', with: 'video_title'
