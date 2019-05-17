@@ -9,8 +9,10 @@ describe 'An Admin can edit a tutorial' do
       .to receive(:current_user)
       .and_return(admin)
 
+    visit tutorial_path(tutorial)
+    
     visit edit_admin_tutorial_path(tutorial)
-
+    
     click_on 'Add Video'
 
     fill_in 'video[title]', with: 'Test Video.'
