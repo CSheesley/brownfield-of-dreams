@@ -19,7 +19,6 @@ describe 'An Admin can edit a tutorial' do
     fill_in 'video[description]', with: 'Description of video.'
     fill_in 'video[video_id]', with: 'J7ikFUlkP_k'
     click_on 'Create Video'
-    save_and_open_page
 
     expect(current_path).to eq(edit_admin_tutorial_path(tutorial))
 
