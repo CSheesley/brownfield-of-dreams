@@ -5,14 +5,20 @@ RSpec.describe 'as a admin on the home page' do
     it 'is taken to a new video path' do
       admin = create(:admin)
       tutorial = create(:tutorial)
+
+      allow_any_instance_of(ApplicationController)
+        .to receive(:current_user)
+        .and_return(admin)
       # video = create(:video)
       # require 'pry'; binding.pry
 
       visit '/'
 
       click_on tutorial.title
+      # save_and_open_page
+      click_link 'Add Video'
 
-      expect(current_path).to eq(admin_new_tutorial_video_path)
+      expect(current_path).to eq(new_admin_tutorial_video_path)
       expect(Video.count).to eq(0)
       
       fill_in 'title', with: 'video_title'
