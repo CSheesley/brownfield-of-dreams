@@ -36,6 +36,8 @@ Rails.application.routes.draw do
 
   post '/add_friend', to: 'friendships#create'
 
+  get '/invite', to: 'invite#new'
+
   get '/about', to: 'about#show'
 
   get '/get_started', to: 'get_started#show'
