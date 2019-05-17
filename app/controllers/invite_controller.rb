@@ -5,8 +5,9 @@ class InviteController < ApplicationController
 
   def create
     @user = current_user
+    @handle = params[:handle]
 
-    if get_email(params[:handle])
+    if git_hub_email(@handle)
       # send email
       flash[:success] = "Successfully sent invite!"
     else
@@ -17,18 +18,11 @@ class InviteController < ApplicationController
 
   private
 
-    def get_email(handle)
-      conn = Faraday.new("https://api.github.com/users/") do |f|
-        f.headers["Authorization"] = "TOKEN #{@user.git_key}"
-        f.adapter Faraday.default_adapter
-      end
-      response = conn.get(handle)
-
-      email = JSON.parse(response.body, symbolize_name: true)["email"]
-
+    def git_hub_email(handle)
+      @_handle_email = service.get_email(handle)
     end
 
-    # def conn
-    #   # service = service.new()
-    # end
+    def service
+      @_service = GithubService.new(@user, @handle)
+    end
 end
