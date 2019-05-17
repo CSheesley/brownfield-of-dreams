@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/dashboard', to: 'dashboard#show'
     resources :tutorials, only: %i[create edit update destroy new] do
-      resources :videos, only: [:create, :new]
+      resources :videos, only: [:create]
     end
     resources :videos, only: %i[edit update destroy]
 
