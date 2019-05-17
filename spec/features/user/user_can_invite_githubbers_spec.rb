@@ -17,9 +17,9 @@ describe 'as a registered user on the dashboard page' do
 
   context 'when sending an email invitation to a github user' do
     it 'is successful if that user has an email tied to github account' do
-      # json_user_info_response = File.open('./fixtures/user_info_with_email.json')
-      # stub_request(:get, 'https://api.github.com/users')
-      #   .to_return(status: 200, body: json_user_info_response)
+      json_user_info_response = File.open('./fixtures/user_info_with_email.json')
+      stub_request(:get, 'https://api.github.com/users')
+        .to_return(status: 200, body: json_user_info_response)
 
       git_token = "d115689f194f1572f02cdad273b850aa2fa6d848"
       user = create(:user, role: 'active', git_key: git_token, git_id: 34421236)
@@ -43,9 +43,9 @@ describe 'as a registered user on the dashboard page' do
     end
 
     it 'fails if that user does not have an email tied to github account' do
-      # json_user_info_response = File.open('./fixtures/user_info_no_email.json')
-      # stub_request(:get, 'https://api.github.com/users')
-      #   .to_return(status: 200, body: json_user_info_response)
+      json_user_info_response = File.open('./fixtures/user_info_no_email.json')
+      stub_request(:get, 'https://api.github.com/users')
+        .to_return(status: 200, body: json_user_info_response)
 
       git_token = "d115689f194f1572f02cdad273b850aa2fa6d848"
 
