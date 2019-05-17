@@ -3,10 +3,8 @@
 <h1 id="message"></h1>
 <div class="col col-4">
   <h4>Videos</h4>
-  <ul>
  <% if @facade.videos == [] %>
   <p>There are no videos for this tutorial, but you can add one!</p>
-
   <%= link_to 'Add Video', edit_admin_tutorial_path(@facade.id) %>
  <% else %>
     <% @facade.videos.each do |video| %>
