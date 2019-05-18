@@ -1,8 +1,5 @@
 class ActivateController < ApplicationController
-
-  def show
-
-  end
+  def show; end
 
   def create
     if current_user.email == params[:email]
@@ -10,6 +7,4 @@ class ActivateController < ApplicationController
       render :show
     end
   end
-
-
 end

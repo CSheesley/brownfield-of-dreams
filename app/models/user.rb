@@ -11,5 +11,4 @@ class User < ApplicationRecord
 
   enum role: %i[default admin active]
   has_secure_password
-
 end

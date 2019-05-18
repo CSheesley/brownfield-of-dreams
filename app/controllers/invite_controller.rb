@@ -1,7 +1,5 @@
 class InviteController < ApplicationController
-
-  def new
-  end
+  def new; end
 
   def create
     @user = current_user
@@ -10,7 +8,7 @@ class InviteController < ApplicationController
 
     if git_hub_email(@handle)
       InvitationMailer.invite(@user, @handle, @email).deliver_now
-      flash[:success] = "Successfully sent invite!"
+      flash[:success] = 'Successfully sent invite!'
     else
       flash[:failure] = "The Github user you selected doesn't have an email address associated with their account."
     end
@@ -19,12 +17,12 @@ class InviteController < ApplicationController
 
   private
 
-    def git_hub_email(handle)
-      @_handle_email ||= service.get_email(handle)
-      # binding.pry
-    end
+  def git_hub_email(handle)
+    @_handle_email ||= service.get_email(handle)
+    # binding.pry
+  end
 
-    def service
-      @_service ||= GithubService.new(@user, @handle)
-    end
+  def service
+    @_service ||= GithubService.new(@user, @handle)
+  end
 end

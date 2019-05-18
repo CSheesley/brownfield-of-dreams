@@ -6,7 +6,7 @@ class GithubService
 
   def get_email(handle)
     data = get_json("/users/#{handle}")
-    email = data["email"]
+    email = data['email']
   end
 
   def get_repos

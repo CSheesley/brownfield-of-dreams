@@ -1,5 +1,4 @@
 class InvitationMailer < ApplicationMailer
-
   def invite(user, handle, email)
     @user = user
     @handle = handle
