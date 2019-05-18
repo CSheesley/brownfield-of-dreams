@@ -6,9 +6,10 @@ class InviteController < ApplicationController
   def create
     @user = current_user
     @handle = params[:handle]
+    @email = git_hub_email(@handle)
 
-    if git_hub_email(@handle)
-      # send email
+    if @email
+      InvitationMailer.invite(@user, @handle, @email)
       flash[:success] = "Successfully sent invite!"
     else
       flash[:failure] = "The Github user you selected doesn't have an email address associated with their account."
