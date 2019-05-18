@@ -18,6 +18,7 @@
   <% if current_user.git_key %>
   <section class='github'>
     <h2>Github</h2>
+    <%= link_to "Send an Invite", invite_path %>
     <h4>Repositories</h4>
       <div class='repositories'>
       <% facade.repos.each do |repo| %>

@@ -1,0 +1,9 @@
+<h1>Invite a fellow Githubber</h1>
+
+<%= form_tag invite_path do %>
+  <div class="invitation">
+    <%= label_tag :handle %>
+    <%= text_field_tag :handle %>
+  </div>
+  <%= submit_tag("Send Invite") %>
+<% end %>
