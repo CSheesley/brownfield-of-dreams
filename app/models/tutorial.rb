@@ -12,5 +12,4 @@ class Tutorial < ApplicationRecord
   def self.public_versions
     Tutorial.where(classroom: false)
   end
-
 end

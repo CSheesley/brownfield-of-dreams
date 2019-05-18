@@ -4,7 +4,25 @@ Style/FrozenStringLiteralComment:
 Style/Documentation:
   Enabled: false
 
+Style/ClassAndModuleChildren:
+  Enabled: false
+
 AllCops:
   Exclude:
-    - 'Gemfile'
-    - 'Gemfile.lock'
+    - db/**/*
+    - config/**/*
+    - script/**/*
+    - bin/**/*
+    - lib/**/*
+    - spec/**/*
+    - node_modules/**/*
+    - Gemfile
+    - Rakefile
+    - config.ru
+
+Naming/MemoizedInstanceVariableName:
+ EnforcedStyleForLeadingUnderscores: optional
+
+Metrics/LineLength:
+ # Ignore class definitions and comments
+ IgnoredPatterns: ['^class .*','^\s*\# .*']
