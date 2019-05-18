@@ -21,7 +21,7 @@ describe 'as a registered user on the dashboard page' do
       stub_request(:get, 'https://api.github.com/users')
         .to_return(status: 200, body: json_user_info_response)
 
-      git_token = "d115689f194f1572f02cdad273b850aa2fa6d848"
+      git_token = "77da67af55f4d56425ef5e53137fea66ff7a1427"
       user = create(:user, role: 'active', git_key: git_token, git_id: 34421236)
 
       allow_any_instance_of(ApplicationController)
@@ -47,7 +47,7 @@ describe 'as a registered user on the dashboard page' do
       stub_request(:get, 'https://api.github.com/users')
         .to_return(status: 200, body: json_user_info_response)
 
-      git_token = "d115689f194f1572f02cdad273b850aa2fa6d848"
+      git_token = "77da67af55f4d56425ef5e53137fea66ff7a1427"
 
       user = create(:user, role: 'active', git_key: git_token, git_id: 34421236)
       allow_any_instance_of(ApplicationController)
