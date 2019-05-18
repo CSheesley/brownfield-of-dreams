@@ -1,7 +1,6 @@
 class Admin::VideosController < Admin::BaseController
   def edit
     @video = Video.find(params[:video_id])
-    require 'pry'; binding.pry
   end
 
   def update
@@ -22,7 +21,6 @@ class Admin::VideosController < Admin::BaseController
       flash[:error] = 'Unable to create video.'
     end
 
-    # redirect_to tutorial_path(tutorial)
     redirect_to edit_admin_tutorial_path(id: tutorial.id)
   end
 
