@@ -1,17 +1,22 @@
 # Brownfield Of Dreams
 
-Brownfield of Dreams was a paired project between @CSheesley and @N-Flint, during Mod 3 at the Turing School of Software & Design.
+Brownfield of Dreams was a paired project between [n-flint](https://github.com/CSheesley) and [n-flint](https://github.com/n-flint) during Mod 3 at the Turing School of Software & Design. The basic premise of the project was to build functionality on top of an existing code base, where we would be exposed to, and learn about the implications of `tech debt`. While working under a deadline, strategic decisions were needed to determine which pieces of functionality should stay, which pieces should be improved upon and tested, and which pieces would ultimately be cut. A link to the original project description and repo can be found here: https://github.com/turingschool-examples/brownfield-of-dreams/projects/1
 
-[n-flint](https://github.com/n-flint)
+An example of the additional features which were added on top of the existing code base can be found by looking at the original project board, which can be found here: https://github.com/turingschool-examples/brownfield-of-dreams/projects/1
 
+### Key Functionality Added:
 
+- Successful set up API calls to gather user data from github.
+- Implemented OAuth, where a user can connect to their github account.
+- Added functionality for users to add github followers/followees as friends on our app.
+- Used Sendgrid to enable email for account activation and invitations.
 
+### Other Links:
 
+Repository Link for cloning: https://github.com/CSheesley/brownfield-of-dreams
 
-Ori
-This is the base repo for a brownfield project used at Turing for Backend Mod 3.
+Heroku Link for viewing: https://pacific-refuge-67925.herokuapp.com/
 
-Project Spec and Evaluation Rubric: https://github.com/turingschool-examples/brownfield-of-dreams
 
 ### Project Board
 
@@ -31,11 +36,13 @@ A visitor is able to see all of the content on the application but in order to b
 
 ## Local Setup
 
-First you'll need to setup an API key with YouTube and have it defined within `ENV['YOUTUBE_API_KEY']`. There will be one failing spec if you don't have this set up.
+Obtain and define the following API keys in an `config/application.yml` file:
+  YouTube - `ENV['YOUTUBE_API_KEY']`
+  Github -  `ENV['GITHUB_API_KEY']`
 
 Clone down the repo
 ```
-$ git clone
+$ git clone https://github.com/CSheesley/brownfield-of-dreams
 ```
 
 Install the gem packages
@@ -73,4 +80,4 @@ $ bundle exec rspec
 
 ### Versions
 * Ruby 2.4.1
-* Rails 5.2.0
+* Rails 5.2.3
