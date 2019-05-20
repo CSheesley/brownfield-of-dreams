@@ -2,6 +2,8 @@
 
 Brownfield of Dreams was a paired project between @CSheesley and @N-Flint, during Mod 3 at the Turing School of Software & Design.
 
+[n-flint](https://github.com/n-flint)
+
 
 
 
