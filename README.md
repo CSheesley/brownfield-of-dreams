@@ -57,7 +57,7 @@ $ bundle exec rspec
 * [will_paginate](https://github.com/mislav/will_paginate)
 * [acts-as-taggable-on](https://github.com/mbleigh/acts-as-taggable-on)
 * [webpacker](https://github.com/rails/webpacker)
-* [vcr](https://github.com/vcr/vcr)
+* [webmock](https://github.com/webmock/webmock)
 * [selenium-webdriver](https://www.seleniumhq.org/docs/03_webdriver.jsp)
 * [chromedriver-helper](http://chromedriver.chromium.org/)
 
