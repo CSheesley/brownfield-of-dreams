@@ -6,9 +6,9 @@ An example of the additional features which were added on top of the existing co
 
 ### Key Functionality Added:
 
-- Successfully set up API calls to gather user data from github.
-- Implemented OAuth, where a user can connect to their github account.
-- Added functionality for users to add github followers/followees as friends on our app.
+- Successfully set up API calls to gather user data from GitHub.
+- Implemented OAuth, where a user can connect to their GitHub account.
+- Added functionality for users to add GitHub followers/followees as friends on our app.
 - Used Sendgrid to enable email for account activation and invitations.
 
 ### Other Links:
