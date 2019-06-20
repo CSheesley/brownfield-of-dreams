@@ -48,7 +48,7 @@ $ rake db:seed
 ```
 
 Run the test suite:
-```ruby
+```
 $ bundle exec rspec
 ```
 
