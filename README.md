@@ -20,8 +20,10 @@ Heroku Link for viewing: https://pacific-refuge-67925.herokuapp.com/
 ## Local Setup
 
 Obtain and define the following API keys in an `config/application.yml` file:
+  ```
   YouTube - `ENV['YOUTUBE_API_KEY']`
   Github -  `ENV['GITHUB_API_KEY']`
+  ```
 
 Clone down the repo
 ```
